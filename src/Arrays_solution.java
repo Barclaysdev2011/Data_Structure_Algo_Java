@@ -5,7 +5,7 @@ public class Arrays_solution {
 
          */
 
-
+        System.out.println(isUnique("avocado"));
     }
 
 
@@ -13,8 +13,15 @@ public class Arrays_solution {
        1.1  Is unique: Implement an algorithm to determine if a string has all unique characters.
              what if you cant use additional data structure?
       */
-    static boolean isUnique(){
-
+    static boolean isUnique(String text){
+        boolean [] charArray = new boolean[128];
+        for(int i=0;i<text.length();i++){
+            int val = text.charAt(i);
+            if(charArray[val]){
+                return false;
+            }
+            charArray[val]=true;
+        }
         return true;
     }
 }
