@@ -9,10 +9,21 @@ public class Arrays_solution {
 
          */
 
-      System.out.println(isUnique("avocado"));
+      // isUnique
+       System.out.println(isUnique("avocado"));
 
+       //  twoSum
         int[] numbs = {3,2,4}; int target = 9;
         twoSum(numbs,target);
+        int [] num ={1,2,3,4};
+
+        // contain duplicate
+        System.out.println(containsDuplicate(num));
+
+
+        // Best Time to Buy and Sell Stock
+        int[] arr ={7, 1, 5, 3, 6, 4};
+        System.out.println(maxProfit(arr));
 
 
     }
@@ -55,4 +66,55 @@ You may assume that each input would have exactly one solution, and you may not 
        return res;
     }
 
+    /*
+Contains Duplicate
+    Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+     */
+
+    static boolean containsDuplicate(int[] nums) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<nums.length;i++){
+            if(map.containsKey(nums[i])){
+                return true;
+            }else {
+                map.put(nums[i],1);
+            }
+
+        }
+        return false;
+
+    }
+
+    /*
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+     */
+
+    static int maxProfit(int[] prices) {
+
+        int maxProfit = 0;
+        int min = prices[0];
+
+        for(int i=1; i< prices.length;i++){
+            if(prices[i] < min){
+                min = prices[i];
+            }
+            int dif = prices[i]-min;
+            if(dif>maxProfit){
+                maxProfit = dif;
+
+            }
+
+        }
+        return maxProfit;
+
+    }
+
 }
+
+
